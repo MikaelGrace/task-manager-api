@@ -1,0 +1,35 @@
+@baseUrl = http://localhost:5275
+
+###
+GET {{baseUrl}}/api/tasks
+Accept: application/json
+
+###
+GET {{baseUrl}}/api/tasks/1
+Accept: application/json
+
+###
+POST {{baseUrl}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Test task",
+  "description": "Demo task",
+  "dueDate": "2026-05-20T00:00:00",
+  "isCompleted": false
+}
+
+###
+PUT {{baseUrl}}/api/tasks/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Updated task",
+  "description": "Updated description",
+  "dueDate": "2026-05-21T00:00:00",
+  "isCompleted": true
+}
+
+###
+DELETE {{baseUrl}}/api/tasks/1
