@@ -15,31 +15,40 @@ function App() {
   // GET TASKS
   const fetchTasks = async () => {
     try {
+      console.log("Fetching tasks...");
       const response = await API.get("/tasks");
+      console.log("Tasks received:", response.data);
       setTasks(response.data);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching tasks:", error);
     }
   };
 
   // CREATE TASK
   const createTask = async () => {
+    if (!title.trim()) {
+      alert("Please enter a task title");
+      return;
+    }
+
     try {
       const newTask = {
-        title: title,
+        title: title.trim(),
         description: "",
-        dueDate: new Date(),
+        dueDate: new Date().toISOString(),
         isCompleted: false
       };
 
-      await API.post("/tasks", newTask);
+      console.log("Sending task:", newTask);
+      const response = await API.post("/tasks", newTask);
+      console.log("Response:", response);
 
       setTitle("");
-
       fetchTasks();
 
     } catch (error) {
-      console.error(error);
+      console.error("Error creating task:", error);
+      alert("Failed to create task: " + error.message);
     }
   };
 
