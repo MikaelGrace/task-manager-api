@@ -84,7 +84,7 @@ function App() {
         onChange={(e) => setTitle(e.target.value)}
       />
 
-      <button onClick={createTask}>
+      <button style={{marginLeft : "10px"}} onClick={createTask}>
         Add Task
       </button>
 
@@ -94,7 +94,7 @@ function App() {
 
             {task.title}
 
-            <button onClick={() => deleteTask(task.id)}>
+            <button style={{marginLeft : "10px"}} onClick={() => deleteTask(task.id)}>
               Delete
             </button>
 
